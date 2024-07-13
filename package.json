@@ -1,5 +1,6 @@
 {
   "name": "game-ocean-keepers",
+  "author" : "web/stek sàrl for 4marine.life Asso",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
