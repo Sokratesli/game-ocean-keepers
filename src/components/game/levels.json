@@ -1,0 +1,72 @@
+{
+    "levels": [
+      {
+        "level": 1,
+        "name": "Beach",
+        "description": "You start at the beach, focusing on keeping the coastal area clean and protecting marine life.",
+        "missions": [
+          "Beach Cleanup: Collect plastic and other litter from the beach.",
+          "Rescue Missions: Free marine animals from plastic nets and other traps.",
+          "Educate: Talk to tourists about the importance of a clean beach and ocean.",
+          "Build Barriers: Set up sandbags to minimize coastal erosion."
+        ]
+      },
+      {
+        "level": 2,
+        "name": "Ocean",
+        "description": "Now you dive into the depths of the ocean to directly protect the marine environment.",
+        "missions": [
+          "Remove Plastic: Collect plastic waste floating in the water.",
+          "Protect Coral Reefs: Clean coral reefs of debris and ensure their preservation.",
+          "Rescue Marine Animals: Help marine animals trapped in plastic waste.",
+          "Promote Sustainability: Establish information centers on islands that promote sustainable practices and slower cargo shipping with sailboats."
+        ]
+      },
+      {
+        "level": 3,
+        "name": "Apartment",
+        "description": "You return to your apartment. Your task is to make sustainable decisions in everyday life to minimize your ecological footprint.",
+        "missions": [
+          "Waste Sorting: Collect plastic waste and take it to recycling.",
+          "Save Water: Turn off the tap while brushing your teeth.",
+          "Save Electricity: Turn off unnecessary lights and electrical devices.",
+          "Avoid Plastic: Choose reusable products instead of single-use plastic.",
+          "Raise Awareness: Put up posters to raise awareness of environmental issues."
+        ]
+      },
+      {
+        "level": 4,
+        "name": "Street",
+        "description": "Now you go outside onto the street and spread environmental awareness in your neighborhood.",
+        "missions": [
+          "Pick Up Trash: Collect plastic waste from sidewalks and green areas.",
+          "Educate: Talk to neighbors about the benefits of electric cars and public transport.",
+          "Promote Bike Paths: Advocate for more bike paths and encourage people to use bicycles.",
+          "Community Projects: Organize a street cleaning event with your neighbors."
+        ]
+      },
+      {
+        "level": 4,
+        "name": "Forest",
+        "description": "In the forest, you help protect nature and reduce environmental impact.",
+        "missions": [
+          "Pick Up Trash: Collect plastic waste and other litter in the forest.",
+          "Animal Care: Help injured animals and take them to a rescue center.",
+          "Protective Measures: Put up signs informing hikers about how to properly interact with nature.",
+          "Reforestation: Plant new trees to sustain the forest."
+        ]
+      },
+      {
+        "level": "extra",
+        "name": "Bonus Level: Global Awareness",
+        "description": "In this bonus level, you work to raise global awareness about ocean and environmental protection.",
+        "missions": [
+          "International Cooperation: Organize international conferences and campaigns for environmental protection.",
+          "Innovative Technologies: Promote and implement technologies that help clean and preserve the oceans.",
+          "Education: Develop educational programs and materials to inform people about the importance of environmental protection.",
+          "Political Action: Work to influence and implement laws and regulations to protect the oceans."
+        ]
+      }
+    ]
+  }
+  
