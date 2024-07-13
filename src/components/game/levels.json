@@ -1,72 +1,429 @@
 {
-    "levels": [
-      {
-        "level": 1,
-        "name": "Beach",
-        "description": "You start at the beach, focusing on keeping the coastal area clean and protecting marine life.",
-        "missions": [
-          "Beach Cleanup: Collect plastic and other litter from the beach.",
-          "Rescue Missions: Free marine animals from plastic nets and other traps.",
-          "Educate: Talk to tourists about the importance of a clean beach and ocean.",
-          "Build Barriers: Set up sandbags to minimize coastal erosion."
-        ]
-      },
-      {
-        "level": 2,
-        "name": "Ocean",
-        "description": "Now you dive into the depths of the ocean to directly protect the marine environment.",
-        "missions": [
-          "Remove Plastic: Collect plastic waste floating in the water.",
-          "Protect Coral Reefs: Clean coral reefs of debris and ensure their preservation.",
-          "Rescue Marine Animals: Help marine animals trapped in plastic waste.",
-          "Promote Sustainability: Establish information centers on islands that promote sustainable practices and slower cargo shipping with sailboats."
-        ]
-      },
-      {
-        "level": 3,
-        "name": "Apartment",
-        "description": "You return to your apartment. Your task is to make sustainable decisions in everyday life to minimize your ecological footprint.",
-        "missions": [
-          "Waste Sorting: Collect plastic waste and take it to recycling.",
-          "Save Water: Turn off the tap while brushing your teeth.",
-          "Save Electricity: Turn off unnecessary lights and electrical devices.",
-          "Avoid Plastic: Choose reusable products instead of single-use plastic.",
-          "Raise Awareness: Put up posters to raise awareness of environmental issues."
-        ]
-      },
-      {
-        "level": 4,
-        "name": "Street",
-        "description": "Now you go outside onto the street and spread environmental awareness in your neighborhood.",
-        "missions": [
-          "Pick Up Trash: Collect plastic waste from sidewalks and green areas.",
-          "Educate: Talk to neighbors about the benefits of electric cars and public transport.",
-          "Promote Bike Paths: Advocate for more bike paths and encourage people to use bicycles.",
-          "Community Projects: Organize a street cleaning event with your neighbors."
-        ]
-      },
-      {
-        "level": 4,
-        "name": "Forest",
-        "description": "In the forest, you help protect nature and reduce environmental impact.",
-        "missions": [
-          "Pick Up Trash: Collect plastic waste and other litter in the forest.",
-          "Animal Care: Help injured animals and take them to a rescue center.",
-          "Protective Measures: Put up signs informing hikers about how to properly interact with nature.",
-          "Reforestation: Plant new trees to sustain the forest."
-        ]
-      },
-      {
-        "level": "extra",
-        "name": "Bonus Level: Global Awareness",
-        "description": "In this bonus level, you work to raise global awareness about ocean and environmental protection.",
-        "missions": [
-          "International Cooperation: Organize international conferences and campaigns for environmental protection.",
-          "Innovative Technologies: Promote and implement technologies that help clean and preserve the oceans.",
-          "Education: Develop educational programs and materials to inform people about the importance of environmental protection.",
-          "Political Action: Work to influence and implement laws and regulations to protect the oceans."
-        ]
-      }
-    ]
-  }
-  
+  "levels": [
+    {
+      "level": 1,
+      "name": "Beach",
+      "description": "You start at the beach, focusing on keeping the coastal area clean and protecting marine life.",
+      "mission": "Answer questions to earn points based on your actions.",
+      "backgroundImage": "Level1_beach",
+      "questions": [
+        {
+          "question": "You visit the beach and notice plastic waste in the sand. What do you do?",
+          "answers": [
+            { "answer": "Pick it up and dispose of it properly.", "points": 1 },
+            { "answer": "Ignore it and continue walking.", "points": -1 },
+            { "answer": "Leave it there.", "points": -1 }
+          ]
+        },
+        {
+          "question": "How do you dispose of plastic bags after a beach outing?",
+          "answers": [
+            {
+              "answer": "Reuse them or dispose of them in a recycling bin.",
+              "points": 1
+            },
+            { "answer": "Throw them away in any available bin.", "points": 0 },
+            {
+              "answer": "Leave them on the beach or in the sand.",
+              "points": -1
+            }
+          ]
+        },
+        {
+          "question": "When visiting a beach, how do you manage your food waste?",
+          "answers": [
+            {
+              "answer": "Carry it back with you and dispose of it properly.",
+              "points": 1
+            },
+            {
+              "answer": "Leave it on the beach assuming it will decompose.",
+              "points": 0
+            },
+            { "answer": "Throw it into the sea.", "points": -1 }
+          ]
+        },
+        {
+          "question": "Do you use sunscreen when visiting the beach? If so, what type?",
+          "answers": [
+            { "answer": "Reef-safe sunscreen.", "points": 1 },
+            { "answer": "Regular sunscreen.", "points": 0 },
+            { "answer": "I don't use sunscreen.", "points": -1 }
+          ]
+        },
+        {
+          "question": "How often do you participate in educational programs or events about beach and ocean conservation?",
+          "answers": [
+            { "answer": "Regularly, whenever possible.", "points": 1 },
+            { "answer": "Occasionally.", "points": 0 },
+            { "answer": "Never.", "points": -1 }
+          ]
+        }
+      ],
+      "feedbacks": [
+        {
+          "points_max": 3,
+          "feedback": "Your decisions focused more on personal convenience rather than sustainable community practices. Consider engaging more actively in community efforts and making decisions that balance economic benefits with environmental conservation."
+        },
+        {
+          "points_max": 6,
+          "feedback": "You made some efforts towards sustainable community development and economic stability. To enhance your impact, consider advocating for policies that promote long-term sustainability and actively engage in community initiatives."
+        },
+        {
+          "points_max": 9,
+          "feedback": "Congratulations! Your commitment to sustainable community development and economic stability is commendable. Continue advocating for policies that promote long-term sustainability and actively engage in community initiatives to inspire others."
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "name": "Ocean",
+      "description": "Now you dive into the depths of the ocean to directly protect the marine environment.",
+      "mission": "Answer questions to earn points based on your actions.",
+      "backgroundImage": "Level2_ocean",
+      "questions": [
+        {
+          "question": "What do you do with plastic waste when you encounter it in the ocean?",
+          "answers": [
+            { "answer": "Remove it and dispose of it properly.", "points": 1 },
+            {
+              "answer": "Ignore it, assuming it's too difficult to manage.",
+              "points": 0
+            },
+            { "answer": "Leave it in the water.", "points": -1 }
+          ]
+        },
+        {
+          "question": "How do you minimize your use of single-use plastics near the ocean?",
+          "answers": [
+            { "answer": "Use reusable containers and utensils.", "points": 1 },
+            { "answer": "Occasionally use single-use plastics.", "points": 0 },
+            { "answer": "Regularly use single-use plastics.", "points": -1 }
+          ]
+        },
+        {
+          "question": "What actions do you take to protect marine wildlife?",
+          "answers": [
+            {
+              "answer": "Participate in rescues or report injured animals.",
+              "points": 1
+            },
+            {
+              "answer": "Observe from a distance but take no action.",
+              "points": 0
+            },
+            { "answer": "Harm or disturb marine wildlife.", "points": -1 }
+          ]
+        },
+        {
+          "question": "When boating or participating in water activities, how do you dispose of waste?",
+          "answers": [
+            {
+              "answer": "Collect and bring it back to shore for proper disposal.",
+              "points": 1
+            },
+            {
+              "answer": "Dispose of it in the water, assuming it will biodegrade.",
+              "points": 0
+            },
+            {
+              "answer": "Leave it floating in the water or on the shore.",
+              "points": -1
+            }
+          ]
+        },
+        {
+          "question": "How often do you educate others about the importance of marine conservation?",
+          "answers": [
+            {
+              "answer": "Regularly, through conversations or organized events.",
+              "points": 1
+            },
+            { "answer": "Occasionally.", "points": 0 },
+            { "answer": "Rarely or never.", "points": -1 }
+          ]
+        }
+      ],
+      "feedbacks": [
+        {
+          "points_max": 3,
+          "feedback": "Your efforts in ocean conservation were limited, focusing more on personal convenience rather than actively addressing marine environmental challenges. Consider expanding your involvement in community efforts and advocating for policies that protect marine ecosystems."
+        },
+        {
+          "points_max": 6,
+          "feedback": "You demonstrated some commitment to ocean conservation efforts. To strengthen your impact, actively engage in collaborative projects with local communities and advocate for policies that promote sustainable marine practices."
+        },
+        {
+          "points_max": 9,
+          "feedback": "Well done! Your dedication to protecting marine ecosystems through active engagement and policy advocacy is admirable. Continue fostering community involvement and promoting sustainable practices to make a lasting impact."
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "name": "Apartment",
+      "description": "You return to your apartment. Your task is to make sustainable decisions in everyday life to minimize your ecological footprint.",
+      "mission": "Answer questions to earn points based on your actions.",
+      "backgroundImage": "Level3_apartment",
+      "questions": [
+        {
+          "question": "How do you dispose of plastic packaging after grocery shopping?",
+          "answers": [
+            {
+              "answer": "Recycle it or choose products with less packaging.",
+              "points": 1
+            },
+            { "answer": "Throw it away in any available bin.", "points": 0 },
+            {
+              "answer": "Leave it in the shopping cart or parking lot.",
+              "points": -1
+            }
+          ]
+        },
+        {
+          "question": "What do you do with food scraps in your kitchen?",
+          "answers": [
+            { "answer": "Compost them.", "points": 1 },
+            { "answer": "Throw them in the regular trash.", "points": 0 },
+            { "answer": "Wash them down the sink.", "points": -1 }
+          ]
+        },
+        {
+          "question": "How do you conserve energy in your daily routine?",
+          "answers": [
+            {
+              "answer": "Turn off lights and electronics when not in use.",
+              "points": 1
+            },
+            {
+              "answer": "Leave lights and electronics on most of the time.",
+              "points": -1
+            }
+          ]
+        },
+        {
+          "question": "What actions do you take to reduce water consumption at home?",
+          "answers": [
+            {
+              "answer": "Use water-saving fixtures or habits like shorter showers.",
+              "points": 1
+            },
+            {
+              "answer": "Use water without specific conservation measures.",
+              "points": 0
+            },
+            { "answer": "Waste water without consideration.", "points": -1 }
+          ]
+        },
+        {
+          "question": "How often do you choose products with minimal or recyclable packaging?",
+          "answers": [
+            {
+              "answer": "Always seek out products with minimal packaging or packaging that is recyclable.",
+              "points": 1
+            },
+            { "answer": "Sometimes.", "points": 0 },
+            {
+              "answer": "Rarely or never consider packaging when making purchases.",
+              "points": -1
+            }
+          ]
+        }
+      ],
+      "feedbacks": [
+        {
+          "points_max": 3,
+          "feedback": "Your efforts in minimizing your ecological footprint in your apartment were minimal. Consider adopting more sustainable habits such as waste reduction, water and electricity conservation, and educating others around you."
+        },
+        {
+          "points_max": 6,
+          "feedback": "You demonstrated some efforts in minimizing your ecological footprint in your apartment. To enhance your impact, focus on adopting more sustainable practices consistently and educating others to contribute to a greener environment."
+        },
+        {
+          "points_max": 9,
+          "feedback": "Fantastic job! Your commitment to minimizing your ecological footprint in your apartment is commendable. Continue leading by example and educating others on sustainable practices to inspire broader change."
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "name": "Street",
+      "description": "Now you go outside onto the street and spread environmental awareness in your neighborhood.",
+      "mission": "Answer questions to earn points based on your actions.",
+      "backgroundImage": "Level4_street",
+      "questions": [
+        {
+          "question": "How do you dispose of litter you find on the sidewalk?",
+          "answers": [
+            {
+              "answer": "Pick it up and dispose of it in a nearby bin.",
+              "points": 1
+            },
+            {
+              "answer": "Walk past it, assuming someone else will pick it up.",
+              "points": 0
+            },
+            { "answer": "Ignore it and leave it there.", "points": -1 }
+          ]
+        },
+        {
+          "question": "What do you do with leftover food containers when eating out?",
+          "answers": [
+            {
+              "answer": "Recycle them if possible or dispose of them properly.",
+              "points": 1
+            },
+            {
+              "answer": "Leave them on the table for the restaurant staff.",
+              "points": 0
+            },
+            { "answer": "Throw them on the street or sidewalk.", "points": -1 }
+          ]
+        },
+        {
+          "question": "How do you contribute to reducing air pollution in your neighborhood?",
+          "answers": [
+            {
+              "answer": "Use public transportation, walk, or bike whenever possible.",
+              "points": 1
+            },
+            { "answer": "Drive a car regularly.", "points": -1 },
+            {
+              "answer": "Use a car for short distances or unnecessary trips.",
+              "points": -1
+            }
+          ]
+        },
+        {
+          "question": "When grocery shopping, what type of bag do you use?",
+          "answers": [
+            { "answer": "Reusable bags.", "points": 1 },
+            { "answer": "Plastic bags offered by the store.", "points": -1 },
+            {
+              "answer": "Don't bring your own bags, use plastic bags.",
+              "points": -1
+            }
+          ]
+        },
+        {
+          "question": "How often do you participate in community clean-up events in your neighborhood?",
+          "answers": [
+            {
+              "answer": "Regularly, whenever there's an opportunity.",
+              "points": 1
+            },
+            { "answer": "Occasionally.", "points": 0 },
+            { "answer": "Never or rarely.", "points": -1 }
+          ]
+        }
+      ],
+      "feedbacks": [
+        {
+          "points_max": 3,
+          "feedback": "Your efforts in spreading environmental awareness in your neighborhood were limited. Consider taking more proactive steps such as organizing community events, advocating for sustainable transportation options, and actively engaging with local residents."
+        },
+        {
+          "points_max": 6,
+          "feedback": "You made some efforts in spreading environmental awareness in your neighborhood. To enhance your impact, focus on organizing regular community events, promoting sustainable transportation options, and collaborating closely with local authorities."
+        },
+        {
+          "points_max": 9,
+          "feedback": "Impressive work! Your dedication to spreading environmental awareness and promoting sustainable practices in your neighborhood is commendable. Continue leading community initiatives and inspiring others to create a greener environment."
+        }
+      ]
+    },
+    {
+      "level": 5,
+      "name": "Forest",
+      "description": "In the forest, you help protect nature and reduce environmental impact.",
+      "mission": "Answer questions to earn points based on your actions.",
+      "backgroundImage": "Level5_forest",
+      "questions": [
+        {
+          "question": "How do you dispose of trash you generate while hiking in the forest?",
+          "answers": [
+            {
+              "answer": "Carry it out and dispose of it properly.",
+              "points": 1
+            },
+            {
+              "answer": "Leave it, assuming it will decompose naturally.",
+              "points": 0
+            },
+            { "answer": "Leave it there.", "points": -1 }
+          ]
+        },
+        {
+          "question": "What do you do if you encounter a wild animal in the forest?",
+          "answers": [
+            {
+              "answer": "Observe from a distance without disturbing it.",
+              "points": 1
+            },
+            {
+              "answer": "Approach for a closer look or interaction.",
+              "points": -1
+            },
+            { "answer": "Attempt to feed or capture it.", "points": -1 }
+          ]
+        },
+        {
+          "question": "How do you contribute to preserving natural habitats in the forest?",
+          "answers": [
+            {
+              "answer": "Support conservation efforts or participate in restoration projects.",
+              "points": 1
+            },
+            {
+              "answer": "Enjoy nature without actively contributing to preservation efforts.",
+              "points": 0
+            },
+            {
+              "answer": "Engage in activities that harm the environment or disturb wildlife.",
+              "points": -1
+            }
+          ]
+        },
+        {
+          "question": "How do you minimize your impact on local flora and fauna while hiking?",
+          "answers": [
+            {
+              "answer": "Stay on designated trails and avoid disturbing plants and animals.",
+              "points": 1
+            },
+            { "answer": "Wander off-trail occasionally.", "points": 0 },
+            {
+              "answer": "Frequently go off-trail and disturb natural habitats.",
+              "points": -1
+            }
+          ]
+        },
+        {
+          "question": "How often do you educate others about responsible outdoor activities and conservation?",
+          "answers": [
+            {
+              "answer": "Regularly, through conversations or organized outdoor events.",
+              "points": 1
+            },
+            { "answer": "Occasionally.", "points": 0 },
+            { "answer": "Rarely or never.", "points": -1 }
+          ]
+        }
+      ],
+      "feedbacks": [
+        {
+          "points_max": 3,
+          "feedback": "Your efforts in protecting and conserving forests were minimal. Consider taking more proactive steps such as organizing reforestation projects, promoting wildlife conservation, and educating visitors on sustainable forest management practices."
+        },
+        {
+          "points_max": 6,
+          "feedback": "You demonstrated some efforts in protecting and conserving forests. To strengthen your impact, focus on actively participating in reforestation projects, supporting local wildlife conservation efforts, and advocating for sustainable tourism practices."
+        },
+        {
+          "points_max": 9,
+          "feedback": "Outstanding commitment! Your efforts in protecting and conserving forests through active participation and advocacy are exemplary. Continue leading conservation initiatives and inspiring others to preserve our natural ecosystems."
+        }
+      ]
+    }
+  ]
+}

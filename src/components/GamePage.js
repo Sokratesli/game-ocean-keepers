@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 import GameNav from './GameNav';
-import Level1 from './game/Level1';
+import Levels from './game/Levels';
 
 import backgroundImage from '../assets/images/menu_background.webp';
 
@@ -16,10 +16,10 @@ const GamePage = ({ onBack }) => {
     const renderLevel = () => {
       switch (currentLevel) {
         case 1:
-          return <Level1 />;
+          return <Levels />;
         // Weitere Levels hier hinzufügen
         default:
-          return <Level1 />;
+          return <Levels />;
       }
     };
 
