@@ -36,7 +36,7 @@ const GameNav = () => {
           <Link
             key={item.id}
             to={item.url || "#"}
-            className="text-white font-bold ml-4"
+            className="text-white font-bold text-lg ml-4"
           >
             {item.label}
           </Link>
@@ -47,7 +47,7 @@ const GameNav = () => {
           <Link
             key={item.id}
             to={item.id === "toMenu" ? null : item.url}
-            className="text-white font-bold ml-4"
+            className="text-white font-bold text-lg ml-4"
             onClick={item.id === "toMenu" ? handleToMenuClick : undefined}
           >
             {item.label}
@@ -57,7 +57,7 @@ const GameNav = () => {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center text-lg justify-center bg-gray-800 bg-opacity-50">
           <div className="bg-white p-4 rounded-md shadow-md text-center">
             <p className="mb-2">
               Are you sure you want to go back to the menu?

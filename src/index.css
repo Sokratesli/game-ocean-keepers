@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./assets/fonts/TitanOne.css";
+@import "./assets/fonts/LondrinaSolid.css";
+
 
 @layer base {
     body {
-      font-family: "Titan One", "regular";
+      font-family: "Londrina Solid", "normal";
     }
     p {
-      font-family: "Titan One", "regular";
+      font-family: "Londrina Solid", "normal";
     }
   }
   

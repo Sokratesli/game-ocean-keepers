@@ -4,7 +4,7 @@ import React from "react";
 const CreditsPage = ({ onBack }) => {
   return (
 
-      <div className="relative z-10 text-center w-1/2 rounded-lg bg-white bg-opacity-25 p-6">
+      <div className="relative z-10 text-center w-1/2 rounded-lg bg-slate-900 bg-opacity-25 p-6 text-lg">
         <h1 className="text-3xl font-bold text-white mb-4">Credits</h1>
         <div className="">
           <p className="text-white">

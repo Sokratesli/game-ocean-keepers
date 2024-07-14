@@ -9,7 +9,7 @@ const Nav = ({ menuItems, onItemClick }) => {
         <React.Fragment key={index}>
           {item.type === "button" && (
             <button
-              className="bg-ocean-500 hover:bg-ocean-700 text-white font-bold py-2 px-4 rounded mb-2 drop-shadow-md"
+              className="bg-ocean-500 hover:bg-ocean-700 text-white text-lg font-bold uppercase py-2 px-4 rounded mb-2 drop-shadow-md"
               onClick={() => onItemClick(item.id)}
             >
               {item.label}
@@ -17,7 +17,7 @@ const Nav = ({ menuItems, onItemClick }) => {
           )}
           {item.type === "link" && (
             <Link to={item.url}>
-              <button className="bg-ocean-500 hover:bg-ocean-700 text-white font-bold py-2 px-4 rounded mb-2 drop-shadow-md">
+              <button className="bg-ocean-500 hover:bg-ocean-700 text-white text-lg font-bold uppercase py-2 px-4 rounded mb-2 drop-shadow-md">
                 {item.label}
               </button>
             </Link>
