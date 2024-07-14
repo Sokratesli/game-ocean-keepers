@@ -1,5 +1,6 @@
 // src/components/Levels.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import levelsData from "./levels.json";
 
 import Level1_beach from "../../assets/images/levels/level1_beach.webp";
@@ -8,13 +9,22 @@ import Level3_apartment from "../../assets/images/levels/level3_apartment.webp";
 import Level4_street from "../../assets/images/levels/level4_street.webp";
 import Level5_forest from "../../assets/images/levels/level5_forest.webp";
 
-const Levels = () => {
-  const [currentLevel, setCurrentLevel] = useState(1); // Start bei Level 1
+const Levels = ({ onPointsUpdate }) => {
+  const [currentLevel, setCurrentLevel] = useState(1);
   const [levelStarted, setLevelStarted] = useState(false);
   const [levelCompleted, setLevelCompleted] = useState(false);
-  const [points, setPoints] = useState(0); // Punkte für die beantworteten Fragen
-  const [feedback, setFeedback] = useState(""); // Feedback basierend auf den Punkten
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Index der aktuellen Frage
+  const [points, setPoints] = useState(0); 
+  const [feedback, setFeedback] = useState("");
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const questionsToShow = 5;
+
+  console.log("currentLevel:", currentLevel);
+  console.log("levelStarted:", levelStarted);
+  console.log("levelCompleted:", levelCompleted);
+  console.log("points:", points);
+  console.log("feedback:", feedback);
+  console.log("currentQuestionIndex:", currentQuestionIndex);
+
 
   const startLevel = () => {
     setLevelStarted(true);
@@ -24,7 +34,6 @@ const Levels = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      // Alle Fragen wurden beantwortet
       setLevelCompleted(true);
       calculateFeedback();
     }
@@ -40,9 +49,8 @@ const Levels = () => {
     setCurrentLevel(currentLevel + 1);
     setLevelCompleted(false);
     setLevelStarted(false);
-    setPoints(0); // Reset Punkte
-    setFeedback(""); // Reset Feedback
-    setCurrentQuestionIndex(0); // Reset Frageindex
+    setFeedback("");
+    setCurrentQuestionIndex(0);
   };
 
   const levelData = levelsData.levels.find(
@@ -50,11 +58,16 @@ const Levels = () => {
   );
 
   if (!levelData) {
-    return <div>No data found for current level.</div>; // Fallback, wenn keine Daten gefunden werden
+    if (currentLevel > 5) {
+      return onPointsUpdate(points);
+    }
+    return points;
   }
 
   const { name, description, mission, questions, feedbacks, backgroundImage } =
     levelData;
+
+  const limitedQuestions = questions.slice(0, questionsToShow);
 
   let dynamicBackgroundImage = "";
   switch (currentLevel) {
@@ -74,12 +87,12 @@ const Levels = () => {
       dynamicBackgroundImage = Level5_forest;
       break;
     default:
-      dynamicBackgroundImage = Level1_beach; // Standardbild für den Fall, dass kein passendes Level gefunden wird
+      dynamicBackgroundImage = Level2_ocean;
       break;
   }
 
   const calculateFeedback = () => {
-    const maxPoints = questions.reduce(
+    const maxPoints = limitedQuestions.reduce(
       (acc, question) =>
         acc + question.answers.reduce((acc, answer) => acc + answer.points, 0),
       0
@@ -97,7 +110,7 @@ const Levels = () => {
 
   const handleAnswer = (pointsToAdd) => {
     setPoints(points + pointsToAdd);
-    nextQuestion(); // Automatisch zur nächsten Frage navigieren
+    nextQuestion();
   };
 
   return (
@@ -107,32 +120,58 @@ const Levels = () => {
         alt="Background"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      {levelStarted ? (
-        levelCompleted ? (
-          <LevelCompletion
-            onNextLevel={nextLevel}
-            feedback={feedback}
-            points={points}
-          />
+      <AnimatePresence mode="wait">
+        {levelStarted ? (
+          levelCompleted ? (
+            <motion.div
+              key="levelCompleted"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="flex items-center justify-center w-full h-full"
+            >
+              <LevelCompletion
+                onNextLevel={nextLevel}
+                feedback={feedback}
+                points={points}
+              />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="levelContent"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="flex items-center justify-center w-full h-full"
+            >
+              <LevelsContent
+                levelName={`Level ${levelData.level}: ${name}`}
+                description={description}
+                mission={mission}
+                questions={limitedQuestions}
+                currentQuestionIndex={currentQuestionIndex}
+                handleAnswer={handleAnswer}
+                prevQuestion={prevQuestion}
+              />
+            </motion.div>
+          )
         ) : (
-          <LevelsContent
-            levelName={`Level ${levelData.level}: ${name}`}
-            description={description}
-            mission={mission}
-            questions={questions}
-            currentQuestionIndex={currentQuestionIndex}
-            handleAnswer={handleAnswer}
-            prevQuestion={prevQuestion}
-          />
-        )
-      ) : (
-        <LevelsDescription
-          onStartLevel={startLevel}
-          levelName={`Level ${levelData.level}: ${name}`}
-          description={description}
-          mission={mission}
-        />
-      )}
+          <motion.div
+            key="levelDescription"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="flex items-center justify-center w-full h-full"
+          >
+            <LevelsDescription
+              onStartLevel={startLevel}
+              levelName={`Level ${levelData.level}: ${name}`}
+              description={description}
+              mission={mission}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -144,13 +183,13 @@ const LevelsDescription = ({
   mission,
 }) => {
   return (
-    <div className="relative z-10 text-center text-white w-1/2 mt-20 rounded-lg bg-slate-900 bg-opacity-25 p-6">
+    <div className="relative z-10 text-center text-white w-1/2 rounded-lg bg-slate-900 bg-opacity-25 p-6">
       <h1 className="text-3xl font-bold mb-4">{levelName}</h1>
-      <p className="mb-4">{description}</p>
-      <p className="mb-2">{mission}</p>
+      <p className="mb-4 text-lg">{description}</p>
+      <p className="mb-2 text-lg">{mission}</p>
       <button
         onClick={onStartLevel}
-        className="mt-4 bg-ocean-500 hover:bg-ocean-700 text-white font-bold py-2 px-4 rounded"
+        className="mt-4 bg-ocean-500 hover:bg-ocean-700 text-white font-bold py-2 px-4 rounded text-lg"
       >
         Start Level
       </button>
@@ -170,16 +209,16 @@ const LevelsContent = ({
   const question = questions[currentQuestionIndex];
 
   return (
-    <div className="w-full h-full relative z-10 text-center text-white mt-20 rounded-lg bg-slate-900 bg-opacity-25 p-6">
+    <div className="relative z-10 text-center text-white w-1/2 rounded-lg bg-slate-900 bg-opacity-25 p-6">
       <h1 className="text-3xl font-bold mb-4">{levelName}</h1>
-      <p className="mb-4">{description}</p>
-      <p className="mb-2">{mission}</p>
+      <p className="mb-4 text-lg">{description}</p>
+      <p className="mb-2 text-lg">{mission}</p>
       <Question question={question} handleAnswer={handleAnswer} />
       <div className="mt-4">
         {currentQuestionIndex > 0 && (
           <button
             onClick={prevQuestion}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded-lg mr-4"
+            className="bg-gray-200 hover:bg-black text-gray-800 hover:text-white font-semibold py-2 px-4 rounded-lg mr-4 text-lg"
           >
             Previous
           </button>
@@ -197,7 +236,7 @@ const Question = ({ question, handleAnswer }) => {
         {question.answers.map((answer, index) => (
           <button
             key={index}
-            className="bg-ocean-500 hover:bg-ocean-700 text-white font-semibold py-2 px-4 rounded-lg  drop-shadow-md"
+            className="bg-ocean-500 hover:bg-ocean-700 text-white text-lg font-semibold py-2 px-4 rounded-lg drop-shadow-md"
             onClick={() => handleAnswer(answer.points)}
           >
             {answer.answer}
@@ -208,21 +247,22 @@ const Question = ({ question, handleAnswer }) => {
   );
 };
 
-
 const LevelCompletion = ({ onNextLevel, feedback, points }) => {
   return (
-    <div className="relative z-10 text-center text-white w-1/2 mt-20 rounded-lg bg-white bg-opacity-25 p-6">
+    <div className="relative z-10 text-center text-white w-1/2 rounded-lg bg-slate-900 bg-opacity-25 p-6">
       <h1 className="text-3xl font-bold mb-4">Level Completed!</h1>
-      <p className="mb-4">{feedback}</p>
-      <p className="mb-2">Points Earned: {points}</p>
+      <p className="mb-4 text-lg">{feedback}</p>
+      <p className="mb-2 text-lg">Points Earned: {points}</p>
       <button
         onClick={onNextLevel}
-        className="mt-4 bg-ocean-500 hover:bg-ocean-700 text-white font-bold py-2 px-4 rounded  drop-shadow-md"
+        className="mt-4 bg-ocean-500 hover:bg-ocean-700 text-white text-lg font-bold py-2 px-4 rounded drop-shadow-md"
       >
         Next Level
       </button>
     </div>
   );
 };
+
+
 
 export default Levels;
